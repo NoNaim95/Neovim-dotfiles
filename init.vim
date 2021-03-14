@@ -1,7 +1,9 @@
+set encoding=utf-8
 filetype indent on
 syntax on
 set nu rnu
 filetype off
+filetype plugin on
 set nocompatible
 set tabstop=4 softtabstop=4
 set shiftwidth=4
@@ -36,15 +38,26 @@ Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 call plug#end()
 
+autocmd FileType cpp inoremap öf for(;;){<Enter><Enter>}<Esc><Up><Up>f;i
+autocmd FileType cpp inoremap öw while(){<Enter><Enter>}<Esc><Up><Up>f)i
+autocmd FileType cpp inoremap öi if(){<Enter><Enter>}<Esc><Up><Up>f)i
+autocmd FileType cpp inoremap öc class{<Enter>private:<Enter><Enter>protected:<Enter><Enter>public:<Enter><Enter>};<Esc>7<Up>ea<Space>
+autocmd FileType cpp inoremap ös struct{<Enter><Enter>};<Esc><Up><Up>f{i
+
+autocmd FileType c inoremap öf for(;;){<Enter><Enter>}<Esc><Up><Up>f;i
+autocmd FileType c inoremap öw while(){<Enter><Enter>}<Esc><Up><Up>f)i
+autocmd FileType c inoremap öi if(){<Enter><Enter>}<Esc><Up><Up>f)i
+autocmd FileType c inoremap ös struct{<Enter><Enter>};<Esc><Up><Up>f{i
 
 colorscheme codedark
 map <silent> <C-n> :NERDTreeToggle<CR>
 map <silent> <C-t> :TlistOpen<CR>
 map <silent> <C-z> :TlistAddFilesRecursive ./<CR>
 inoremap jj <Esc>
-inoremap <C-j> <Esc>
-inoremap <C-l> <right>
+inoremap <C-d> <Esc>
+inoremap <C-j> <down>
 inoremap <C-k> <up>
+inoremap <C-l> <right>
 inoremap <C-h> <left>
 
 nnoremap - /
@@ -104,7 +117,7 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
 " Use K to show documentation in preview window
-nnoremap <silent> K :call <SID>show_documentation()<CR>
+"nnoremap <silent> Ö :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
